@@ -5,9 +5,10 @@ import { LogFiltersPanel } from './LogFiltersPanel';
 import { LogTable } from './LogTable';
 import { LogMetricsCards } from './LogMetricsCards';
 import { LogIngestionForm } from './LogIngestionForm';
+import { LogAnalytics } from './LogAnalytics';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Monitor, Database, Search } from 'lucide-react';
+import { Monitor, Database, Search, TrendingUp } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export function LogDashboard() {
@@ -96,10 +97,14 @@ export function LogDashboard() {
       {/* Main Content */}
       <main className="container mx-auto px-6 py-6">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-2 lg:w-400">
+          <TabsList className="grid w-full grid-cols-3 lg:w-600">
             <TabsTrigger value="monitor" className="flex items-center gap-2">
               <Search className="h-4 w-4" />
               Monitor & Query
+            </TabsTrigger>
+            <TabsTrigger value="analytics" className="flex items-center gap-2">
+              <TrendingUp className="h-4 w-4" />
+              Analytics
             </TabsTrigger>
             <TabsTrigger value="ingest" className="flex items-center gap-2">
               <Database className="h-4 w-4" />
@@ -135,6 +140,10 @@ export function LogDashboard() {
                 </Card>
               </div>
             </div>
+          </TabsContent>
+
+          <TabsContent value="analytics" className="space-y-6">
+            {metrics && <LogAnalytics logs={logs} metrics={metrics} />}
           </TabsContent>
 
           <TabsContent value="ingest" className="space-y-6">

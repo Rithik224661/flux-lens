@@ -1,73 +1,245 @@
-# Welcome to your Lovable project
+# Flux Lens - Professional Log Monitoring System
 
-## Project info
+A sophisticated log ingestion and querying system built with React, TypeScript, and Tailwind CSS. Flux Lens provides a professional monitoring dashboard interface inspired by industry-leading tools like Grafana and Datadog.
 
-**URL**: https://lovable.dev/projects/7c4e4493-b795-40b0-9b42-49d51c0e4b64
+## 🚀 Features
 
-## How can I edit this code?
+### Core Functionality
+- **Professional Monitoring Dashboard** with dark theme
+- **Real-time Log Filtering** with debounced search (300ms)
+- **Advanced Multi-Filter Search** (level, message, resourceId, timestamp range, traceId, spanId, commit)
+- **Log Ingestion Interface** simulating backend API endpoints
+- **Visual Analytics Dashboard** with charts and metrics
+- **Color-coded Log Levels** with visual indicators
+- **Responsive Design** optimized for desktop monitoring workflows
 
-There are several ways of editing your application.
+### Technical Features
+- **TypeScript** with comprehensive type definitions
+- **Mock API Simulation** with localStorage persistence
+- **Professional Design System** with semantic tokens
+- **Component Architecture** with clean separation of concerns
+- **Debounced Search** for smooth performance
+- **Date/Time Range Filtering** with calendar pickers
 
-**Use Lovable**
+## 🛠 Technology Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7c4e4493-b795-40b0-9b42-49d51c0e4b64) and start prompting.
+- **Frontend**: React 18, TypeScript, Vite
+- **UI Framework**: Tailwind CSS with custom design system
+- **Components**: Radix UI primitives (shadcn/ui)
+- **Charts**: Recharts for analytics visualization
+- **Icons**: Lucide React
+- **Date Handling**: date-fns
+- **Form Handling**: React Hook Form with Zod validation
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📁 Project Structure
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+src/
+├── components/           # React components
+│   ├── ui/              # Base UI components (shadcn/ui)
+│   ├── LogDashboard.tsx # Main dashboard orchestrator
+│   ├── LogFiltersPanel.tsx # Advanced filtering sidebar
+│   ├── LogTable.tsx     # Professional log display
+│   ├── LogAnalytics.tsx # Visual analytics dashboard
+│   ├── LogIngestionForm.tsx # Log ingestion interface
+│   └── LogMetricsCards.tsx # Real-time metrics display
+├── services/            # API services
+│   └── logApi.ts       # Mock API with localStorage
+├── types/              # TypeScript type definitions
+│   └── log.ts          # Log-related types
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions
+└── pages/              # Page components
 ```
 
-**Edit a file directly in GitHub**
+## 🚦 Getting Started
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Prerequisites
+- Node.js 18+ and npm
+- Modern web browser
 
-**Use GitHub Codespaces**
+### Installation & Setup
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd flux-lens
+   ```
 
-## What technologies are used for this project?
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-This project is built with:
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+4. **Open your browser**
+   Navigate to `http://localhost:5173` to view the application
 
-## How can I deploy this project?
+### Build for Production
+```bash
+npm run build
+npm run preview  # Preview production build
+```
 
-Simply open [Lovable](https://lovable.dev/projects/7c4e4493-b795-40b0-9b42-49d51c0e4b64) and click on Share -> Publish.
+## 📊 Log Schema
 
-## Can I connect a custom domain to my Lovable project?
+The system uses the following log entry structure:
 
-Yes, you can!
+```typescript
+interface LogEntry {
+  level: 'error' | 'warn' | 'info' | 'debug';
+  message: string;
+  resourceId: string;
+  timestamp: string; // ISO 8601 format
+  traceId: string;
+  spanId: string;
+  commit: string;
+  metadata: {
+    parentResourceId: string;
+  };
+}
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🎯 API Simulation
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Simulated Endpoints
+
+**POST /logs** (Log Ingestion)
+- Validates log entry format
+- Stores in localStorage
+- Returns success/error response
+
+**GET /logs** (Query with Filters)
+- Supports combinable filters:
+  - `level`: Array of log levels
+  - `message`: Full-text search (case-insensitive)
+  - `resourceId`: Resource identifier filter
+  - `timestamp_start/timestamp_end`: Date range filtering
+  - `traceId`: Trace identifier filter
+  - `spanId`: Span identifier filter
+  - `commit`: Commit hash filter
+- Returns filtered results in reverse chronological order
+
+## 🎨 Design System
+
+### Color Scheme
+- **Primary**: Blue gradient theme
+- **Log Levels**:
+  - Error: Red (`--log-error`)
+  - Warning: Yellow (`--log-warn`)
+  - Info: Blue (`--log-info`)
+  - Debug: Purple (`--log-debug`)
+
+### Key Design Principles
+- **Professional monitoring aesthetic** inspired by Grafana/Datadog
+- **Dark theme optimized** for extended monitoring sessions
+- **Semantic color tokens** for consistent theming
+- **Smooth animations** and transitions
+- **Typography hierarchy** for information clarity
+
+## 🔧 Configuration
+
+### Design System Customization
+Edit `src/index.css` and `tailwind.config.ts` to customize:
+- Color palette and gradients
+- Typography scales
+- Spacing and shadows
+- Animation timings
+
+### Mock Data
+The system includes realistic mock log data for demonstration. Data persists in localStorage between sessions.
+
+## 🚀 Deployment
+
+This project can be deployed on any static hosting platform:
+
+- **Vercel**: Connect GitHub repo for automatic deployments
+- **Netlify**: Drag & drop the `dist` folder after build
+- **AWS S3 + CloudFront**: Upload build files to S3 bucket
+- **GitHub Pages**: Use GitHub Actions for automated deployment
+
+## 🧩 Key Components
+
+### LogDashboard
+Main orchestrator component managing state and routing between different views (Monitor, Analytics, Ingestion).
+
+### LogFiltersPanel
+Advanced filtering sidebar with:
+- Debounced text search
+- Multi-select log level checkboxes
+- Date range pickers
+- Real-time filter application
+
+### LogTable
+Professional log display with:
+- Color-coded log levels
+- Responsive design
+- Metadata display
+- Loading states
+
+### LogAnalytics
+Visual analytics dashboard featuring:
+- Log level distribution pie chart
+- 24-hour activity timeline
+- Stacked bar charts for trends
+- Top resources by log count
+
+## 🎯 Design Decisions & Trade-offs
+
+### Frontend-Only Architecture
+**Decision**: Implement mock API simulation instead of real backend
+**Rationale**: Demonstrates full-stack concepts while maintaining simplicity for demo purposes
+**Trade-off**: localStorage limitations vs. database persistence
+
+### Component Architecture
+**Decision**: Modular component design with clear separation of concerns
+**Rationale**: Maintainable, testable, and reusable code structure
+**Benefit**: Easy to extend and modify individual features
+
+### Design System Approach
+**Decision**: Semantic tokens and custom CSS properties
+**Rationale**: Consistent theming and easy customization
+**Benefit**: Professional appearance with brand flexibility
+
+### Real-time Filtering
+**Decision**: Debounced search with 300ms delay
+**Rationale**: Balance between responsiveness and performance
+**Benefit**: Smooth user experience without excessive API calls
+
+## 🔮 Future Enhancements
+
+### Backend Implementation
+- Node.js + Express API server
+- JSON file persistence
+- Real HTTP endpoints
+- Input validation and error handling
+
+### Advanced Features
+- WebSocket real-time updates
+- Export functionality (CSV, JSON)
+- Log aggregation and grouping
+- Advanced query language
+- Alerting and notifications
+
+### DevOps & Testing
+- Docker containerization
+- Unit and integration tests
+- CI/CD pipeline
+- Performance monitoring
+- End-to-end testing
+
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+---
+
+**Built with ❤️ for professional log monitoring workflows**
