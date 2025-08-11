@@ -26,7 +26,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					glow: 'hsl(var(--primary-glow))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -51,6 +52,16 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				log: {
+					error: 'hsl(var(--log-error))',
+					'error-bg': 'hsl(var(--log-error-bg))',
+					warn: 'hsl(var(--log-warn))',
+					'warn-bg': 'hsl(var(--log-warn-bg))',
+					info: 'hsl(var(--log-info))',
+					'info-bg': 'hsl(var(--log-info-bg))',
+					debug: 'hsl(var(--log-debug))',
+					'debug-bg': 'hsl(var(--log-debug-bg))'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
