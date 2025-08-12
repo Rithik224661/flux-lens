@@ -1,6 +1,6 @@
 # Flux Lens - Professional Log Monitoring System
 
-A clean, professional log ingestion and querying system. No Lovable AI branding or dependencies.
+A clean, professional log ingestion and querying system.
 
 ## Project Setup & Usage
 
@@ -12,6 +12,7 @@ A clean, professional log ingestion and querying system. No Lovable AI branding 
 ### 2. Install Dependencies
 ```bash
 npm install
+npm install tailwindcss
 cd backend && npm install
 ```
 
