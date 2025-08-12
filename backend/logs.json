@@ -1,0 +1,50 @@
+[
+  {
+    "level": "info",
+    "message": "info-log-test",
+    "resourceId": "server-106",
+    "timestamp": "2025-08-11T11:17:16.986Z",
+    "traceId": "trace-107",
+    "spanId": "span-234",
+    "commit": "abc2erw",
+    "metadata": {
+      "parentResourceId": "parent-service"
+    }
+  },
+  {
+    "level": "error",
+    "message": "logs-error",
+    "resourceId": "server-104",
+    "timestamp": "2025-08-11T11:16:38.740Z",
+    "traceId": "trace-105",
+    "spanId": "span-342",
+    "commit": "abc156",
+    "metadata": {
+      "parentResourceId": "parent-services"
+    }
+  },
+  {
+    "level": "debug",
+    "message": "test-debug",
+    "resourceId": "eded",
+    "timestamp": "2025-08-11T11:13:08.015Z",
+    "traceId": "dwd",
+    "spanId": "wdwd",
+    "commit": "wdssws",
+    "metadata": {
+      "parentResourceId": "swswsws"
+    }
+  },
+  {
+    "level": "warn",
+    "message": "Test Log Mesg",
+    "resourceId": "server-101",
+    "timestamp": "2025-08-11T11:11:38.979Z",
+    "traceId": "trace-102",
+    "spanId": "span-345",
+    "commit": "abc123",
+    "metadata": {
+      "parentResourceId": "parent-service"
+    }
+  }
+]

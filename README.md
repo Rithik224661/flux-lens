@@ -1,6 +1,79 @@
 # Flux Lens - Professional Log Monitoring System
 
-A sophisticated log ingestion and querying system built with React, TypeScript, and Tailwind CSS. Flux Lens provides a professional monitoring dashboard interface inspired by industry-leading tools like Grafana and Datadog.
+A clean, professional log ingestion and querying system. No Lovable AI branding or dependencies.
+
+## Project Setup & Usage
+
+### 1. Prerequisites
+- Node.js 18+
+- npm 9+
+- Docker (optional, for containerized deployment)
+
+### 2. Install Dependencies
+```bash
+npm install
+cd backend && npm install
+```
+
+### 3. Run Locally
+- Start the backend:
+  ```bash
+  cd backend
+  npm run dev
+  ```
+- Start the frontend:
+  ```bash
+  cd ..
+  npm run dev
+  ```
+- Frontend: http://localhost:8080
+- Backend API: http://localhost:4000
+
+### 4. Docker (Full Stack)
+Build and run both frontend and backend with Docker Compose:
+```bash
+docker-compose up --build
+```
+
+## 🐳 Docker Setup
+
+### Prerequisites
+- Docker 20.10+
+- Docker Compose 2.0+
+
+### Development with Docker
+
+1. **Start the application**
+   ```bash
+   # From the project root directory
+   docker-compose up --build
+   ```
+
+2. **Access the application**
+   - Frontend: http://localhost:8080
+   - Backend API: http://localhost:4000
+
+### Production Build
+
+1. **Build the production images**
+   ```bash
+   docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
+   ```
+
+2. **View logs**
+   ```bash
+   docker-compose logs -f
+   ```
+
+3. **Stop the application**
+   ```bash
+   docker-compose down
+   ```
+
+### Volumes
+- Logs are persisted in `backend/logs.json`
+- The backend container automatically restarts if it crashes
+- The frontend is served through Nginx for better performance
 
 ## 🚀 Features
 
@@ -15,7 +88,7 @@ A sophisticated log ingestion and querying system built with React, TypeScript, 
 
 ### Technical Features
 - **TypeScript** with comprehensive type definitions
-- **Mock API Simulation** with localStorage persistence
+- **Backend API**: Node.js/Express, logs stored in a JSON file (logs.json)
 - **Professional Design System** with semantic tokens
 - **Component Architecture** with clean separation of concerns
 - **Debounced Search** for smooth performance
@@ -24,9 +97,11 @@ A sophisticated log ingestion and querying system built with React, TypeScript, 
 ## 🛠 Technology Stack
 
 - **Frontend**: React 18, TypeScript, Vite
+- **Backend**: Node.js, Express, Joi (schema validation), JSON file storage
 - **UI Framework**: Tailwind CSS with custom design system
 - **Components**: Radix UI primitives (shadcn/ui)
 - **Charts**: Recharts for analytics visualization
+- **Docker**: Production-ready containerization with multi-stage builds
 - **Icons**: Lucide React
 - **Date Handling**: date-fns
 - **Form Handling**: React Hook Form with Zod validation
@@ -44,7 +119,7 @@ src/
 │   ├── LogIngestionForm.tsx # Log ingestion interface
 │   └── LogMetricsCards.tsx # Real-time metrics display
 ├── services/            # API services
-│   └── logApi.ts       # Mock API with localStorage
+│   └── logApi.ts       # Backend API service connecting to Node.js/Express backend
 ├── types/              # TypeScript type definitions
 │   └── log.ts          # Log-related types
 ├── hooks/              # Custom React hooks

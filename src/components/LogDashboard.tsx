@@ -58,8 +58,21 @@ export function LogDashboard() {
   }, [filters, logs]);
 
   const updateMetrics = () => {
-    const newMetrics = logApi.getMetrics();
-    setMetrics(newMetrics);
+    // Calculate metrics from logs
+    const byLevel = logs.reduce((acc, log) => {
+      acc[log.level] = (acc[log.level] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
+    setMetrics({
+      total: logs.length,
+      byLevel: {
+        error: byLevel.error || 0,
+        warn: byLevel.warn || 0,
+        info: byLevel.info || 0,
+        debug: byLevel.debug || 0,
+      },
+      lastUpdated: new Date().toISOString(),
+    });
   };
 
   const handleFiltersChange = (newFilters: LogFilters) => {

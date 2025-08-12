@@ -219,4 +219,6 @@ class LogApiService {
   }
 }
 
-export const logApi = new LogApiService();
+import { backendLogApi } from './backendLogApi';
+
+export const logApi = backendLogApi;
